@@ -2,7 +2,7 @@
 
 {% block body_block %}
 
-<h1>List's Products</h1>
+<h1>List's Of Products</h1>
 <hr>
 
 <table border="2">
@@ -20,14 +20,17 @@
         <td>{{product.price}}</td>
         <td>{{product.is_available}}</td>
         <td>
-            <a href="{% url 'product_detail' id=product.id %}">Details</a>
-            <a href="">Edit</a>
-            <a href="">Delete</a>
+            <a href="{% url 'product_detail' id=product.id %}"class="btn btn-primary">Details</a>
+            <a href="{% url 'product_update'  id=product.id%}"class="btn btn-warning">Edit</a>
+            <a href="{% url 'product_delete' id=product.id%}"class="btn btn-danger">Delete</a>
         </td>
 
     </tr>
     {% endfor %}
+
 </table>
+&nbsp;<br>
+<a href="{% url 'product_create'%}"class="btn btn-success">Add New Product</a>
 
 
 
