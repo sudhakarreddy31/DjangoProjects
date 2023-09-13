@@ -21,15 +21,18 @@ class BookDetailView(DetailView):
 class BookCreateView(CreateView):
     model = Book
     fields = ['title', 'author', 'pages', 'price']
-    template_name = 'projectapp/book_create.html'
-
+    template_name = '/home/sudhakarreddy/DjangoProjects/project1/projectapp/templates/projectapp/book_create.html'
 
 
 class BookUpdateView(CreateView):
     model = Book
     fields = ['title', 'author', 'pages', 'price']
-    template_name = '/home/sudhakarreddy/Djangoprojects/project1/projectapp/templates/projectapp/book_update.html'
+    template_name = 'projectapp/book_update.html'
+    success_url = 'listview/'
 
+    def get_object(self, queryset=None):
+    # Retrieve the Book object based on the primary key (pk) from the URL
+        return Book.objects.get(pk=self.kwargs['pk']) 
 
 
 class BookDeleteView(DeleteView):
